@@ -17,10 +17,15 @@ Resources:
       SecurityGroups:
         - !Ref SGgroup
       UserData:
-        Fn::Base64: AWS CloudFormation   
+        Fn::Base64: !Sub | 
           - |
-            #!/bin/bash
-            echo "Hello word"    
+          #!/bin/bash
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+          AZ=$( curl http://169.254.169.254/latest/meta-data/placement/avaliability-zone)
+          echo "$AZ" > /var/www/html/index.html    
   # VPC:
   #   Type: AWS::EC2::VPC
   #   Properties:
