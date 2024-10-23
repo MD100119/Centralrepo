@@ -8,7 +8,7 @@ Resources:
           CidrIp: "0.0.0.0/0"  # Allow traffic from everywhere
       # VpcId: !Ref VPC  # Use your VPC ID or add a default VPC
 
-  Instancenew:
+  Instancenew1:
     Type: AWS::EC2::Instance
     Properties:
       AvailabilityZone: ap-south-1a
