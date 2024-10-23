@@ -39,7 +39,7 @@ Resources:
 Outputs:
   InstanceId:
     Description: EC2 Instance ID
-    Value: !Ref Instancenew
+    Value: !Ref Instancenew1
   InstancePublicIP:
     Description: Public IP of EC2 Instance
-    Value: !GetAtt Instancenew.PublicIp
+    Value: !GetAtt Instancenew1.PublicIp
