@@ -7,7 +7,7 @@ Resources:
     - IpProtocol: "-1"  # -1 means all protocols
       CidrIp: "0.0.0.0/0"  # Allow traffic from everywhere
 
-  Instance:
+  Instancenew:
     Type: AWS::EC2::Instance
     Properties:
       AvailabilityZone: ap-south-1a
