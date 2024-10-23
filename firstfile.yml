@@ -17,7 +17,7 @@ Resources:
       SecurityGroups:
         - !Ref SGgroup
       UserData: 
-        echo "Hello word"    
+          echo "Hello word"    
   # VPC:
   #   Type: AWS::EC2::VPC
   #   Properties:
