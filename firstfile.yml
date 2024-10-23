@@ -1,4 +1,7 @@
-Pushing new file to git.
-adding this new line to sit01
-Updated the role.
-New error will come now.
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-04a37924ffe27da53
+      InstanceType: t2.micro
