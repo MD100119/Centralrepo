@@ -6,6 +6,7 @@ Resources:
     SecurityGroupIngress: 
     - IpProtocol: "-1"  # -1 means all protocols
       CidrIp: "0.0.0.0/0"  # Allow traffic from everywhere
+    VpcId: !Ref VPC  # Use your VPC ID or add a default VPC
 
   Instancenew:
     Type: AWS::EC2::Instance
@@ -14,4 +15,21 @@ Resources:
       ImageId: ami-04a37924ffe27da53
       InstanceType: t2.micro
       SecurityGroups:
-        - !Ref SGgroup   
+        - !Ref SGgroup  
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 172.31.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: MyVPC
+
+Outputs:
+  InstanceId:
+    Description: EC2 Instance ID
+    Value: !Ref Instancenew
+  InstancePublicIP:
+    Description: Public IP of EC2 Instance
+    Value: !GetAtt Instancenew.PublicIp
