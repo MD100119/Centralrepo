@@ -15,7 +15,9 @@ Resources:
       ImageId: ami-04a37924ffe27da53
       InstanceType: t2.micro
       SecurityGroups:
-        - !Ref SGgroup  
+        - !Ref SGgroup
+      UserData: 
+        echo "Hello word"    
   # VPC:
   #   Type: AWS::EC2::VPC
   #   Properties:
