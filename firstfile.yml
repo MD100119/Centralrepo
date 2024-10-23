@@ -1,7 +1,18 @@
 Resources:
+  SGgroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+    GroupDescription: Allow all inbound traffic
+    SecurityGroupIngress: 
+    - IpProtocol: "-1"  # -1 means all protocols
+      CidrIp: "0.0.0.0/0"  # Allow traffic from everywhere
+
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
       AvailabilityZone: ap-south-1a
       ImageId: ami-04a37924ffe27da53
       InstanceType: t2.micro
+      SecurityGroups:
+        - !Ref SGgroup
+      
