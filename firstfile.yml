@@ -21,21 +21,16 @@ Resources:
           - |
           #!/bin/bash
           exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+          curl http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
           yum update -y
           yum install -y httpd
           systemctl start httpd
           systemctl enable httpd
-          AZ=$( curl http://169.254.169.254/latest/meta-data/placement/avaliability-zone)
-          echo "$AZ" > /var/www/html/index.html    
-  # VPC:
-  #   Type: AWS::EC2::VPC
-  #   Properties:
-  #     CidrBlock: 172.31.0.0/16
-  #     EnableDnsSupport: true
-  #     EnableDnsHostnames: true
-  #     Tags:
-  #       - Key: Name
-  #         Value: MyVPC
+          AZ=$( curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
+          echo "$AZ" > /var/www/html/index.html
+      Tags:
+        - Key: Name
+          Value: chef  # Replace this with the desired chef node name
 
 Outputs:
   InstanceId:
