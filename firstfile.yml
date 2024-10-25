@@ -1,35 +1,35 @@
-# Resources:
-#   SGgroup:
-#     Type: AWS::EC2::SecurityGroup
-#     Properties:
-#       GroupDescription: Allow all inbound traffic
-#       SecurityGroupIngress: 
-#         - IpProtocol: "-1"  # -1 means all protocols
-#           CidrIp: "0.0.0.0/0"  # Allow traffic from everywhere
-#       # VpcId: !Ref VPC  # Use your VPC ID or add a default VPC
+Resources:
+  SGgroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow all inbound traffic
+      SecurityGroupIngress: 
+        - IpProtocol: "-1"  # -1 means all protocols
+          CidrIp: "0.0.0.0/0"  # Allow traffic from everywhere
+      # VpcId: !Ref VPC  # Use your VPC ID or add a default VPC
 
-#   # Instancenew1:
-#   #   Type: AWS::EC2::Instance
-#   #   Properties:
-#   #     AvailabilityZone: ap-south-1a
-#   #     ImageId: ami-04a37924ffe27da53
-#   #     InstanceType: t2.micro
-#   #     SecurityGroups:
-#   #       - !Ref SGgroup
-#   #     UserData:
-#   #       Fn::Base64: !Sub | 
-#   #         #!/bin/bash
-#   #         exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
-#   #         curl http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
-#   #         yum update -y
-#   #         yum install -y httpd
-#   #         systemctl start httpd
-#   #         systemctl enable httpd
-#   #         AZ=$( curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
-#   #         echo "$AZ" > /var/www/html/index.html
-#   #     Tags:
-#   #       - Key: Name
-#   #         Value: chef  # Replace this with the desired chef node name
+  # Instancenew1:
+  #   Type: AWS::EC2::Instance
+  #   Properties:
+  #     AvailabilityZone: ap-south-1a
+  #     ImageId: ami-04a37924ffe27da53
+  #     InstanceType: t2.micro
+  #     SecurityGroups:
+  #       - !Ref SGgroup
+  #     UserData:
+  #       Fn::Base64: !Sub | 
+  #         #!/bin/bash
+  #         exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+  #         curl http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+  #         yum update -y
+  #         yum install -y httpd
+  #         systemctl start httpd
+  #         systemctl enable httpd
+  #         AZ=$( curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
+  #         echo "$AZ" > /var/www/html/index.html
+  #     Tags:
+  #       - Key: Name
+  #         Value: chef  # Replace this with the desired chef node name
 
 # Outputs:
 #   InstanceId:
